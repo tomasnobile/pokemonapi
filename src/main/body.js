@@ -36,11 +36,9 @@ searchPoke = () => {
     return(
         <View style={styles.container}>
             <Image source={require('../../assets/pokemon.png')} style={styles.pokemon}></Image>
-            <TextInput placeholder="Search your Pokemon here!" style={styles.input}>
-            </TextInput>
+            <TextInput placeholder="Search your Pokemon heree!" style={styles.input}/>
             <TouchableWithoutFeedback onPress={()=>this.props.switchScreen('search')}>
-                 <Image source={require('../../assets/logo.png')} style={styles.logo}>
-                </Image>
+                 <Image source={require('../../assets/logo.png')} style={styles.logo}/>
             </TouchableWithoutFeedback>
         
 

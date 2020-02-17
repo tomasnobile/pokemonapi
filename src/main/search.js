@@ -1,5 +1,5 @@
 import React, {Component } from 'react'
-import {View, StyleSheet, TouchableWithoutFeedback, Image} from 'react-native'
+import {View, StyleSheet, TouchableWithoutFeedback, Image, TextInput,Text} from 'react-native'
 import {Header, Item, Input} from 'native-base';
 
 class Search extends Component{
@@ -9,6 +9,9 @@ class Search extends Component{
         pokeSearch: ""
     }
    }
+
+
+
     searchPoke = () =>{
 
     }
@@ -16,40 +19,35 @@ class Search extends Component{
         return(
             <View style={styles.container}>
                 <Header style={styles.header}>
-                    <Item>
-                         <Input value={this.state.pokeSearch} placeholder="Search Pokemon" 
-                            onChangeText={(pokeSearch)=>this.setState({pokeSearch})}/>
+                    <Item style={{flexDirection:'row'}}>
+                         <TextInput  placeholder="Search Pokemonn" 
+                            onChangeText={(pokeSearch) => this.setState({pokeSearch})}/>                            
                             <TouchableWithoutFeedback onPress={this.searchPoke}>
-                                <Image source={require('../../assets/logo.png')} style={styles.logo}>
-                                </Image>
+                                <Image source={require('../../assets/logo.png')} style={styles.logo} />                                
                              </TouchableWithoutFeedback>
-                    </Item>
-                   
-
+                    </Item>                    
                 </Header>
+                <Text>{this.state.pokeSearch}</Text>
             </View>
         )
     }
 }
 const styles = StyleSheet.create({
     container : {
-        flex: 1,
-        bottom: 300,
+        marginHorizontal:50
     },
     logo : {
         height: 40,
         width: 40,
-        start: 3
+        marginLeft:120
     },
     header : {
-        backgroundColor: 'black',
+      
+        backgroundColor: 'white',
         height: 45,
-        width: 375,
-        marginStart: -9,
+        width: 300,      
         fontWeight: 'bold',
-        fontSize: 15,
-        borderWidth: 1,
-
+        fontSize: 15,   
     }
 })
 export default Search
