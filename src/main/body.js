@@ -36,14 +36,13 @@ searchPoke = () => {
     return(
         <View style={styles.container}>
             <Image source={require('../../assets/pokemon.png')} style={styles.pokemon}></Image>
-            <TextInput placeholder="Search your Pokemon here!" style={styles.input}>
-            </TextInput>
+            <TextInput placeholder="Search your Pokemon here!" style={styles.input}/>
             <TouchableWithoutFeedback onPress={()=>this.props.switchScreen('search')}>
-                 <Image source={require('../../assets/logo.png')} style={styles.logo}>
-                </Image>
+                 <Image source={require('../../assets/logo.png')} style={styles.logo}/>
             </TouchableWithoutFeedback>
-        
-
+            <View>
+                <Image source={require('../../assets/squirtle.png')} style={styles.footer}/>
+            </View>
         </View>
     )
     }
@@ -79,6 +78,13 @@ const styles = StyleSheet.create({
         height: 150,
         resizeMode: 'center',
         bottom: 30
+    },
+    footer : {
+        width: 260,
+        height: 260,
+        bottom: 30,
+        resizeMode: 'center',
+        start: 20 
     }
 })
 

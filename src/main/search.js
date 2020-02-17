@@ -1,5 +1,5 @@
 import React, {Component } from 'react'
-import {View, Text, TouchableWithoutFeedback, Image, StyleSheet, TextInput} from 'react-native'
+import {View, TouchableWithoutFeedback, Image, StyleSheet, TextInput} from 'react-native'
 
 class Search extends Component{
     constructor(props){
@@ -22,7 +22,9 @@ class Search extends Component{
                      <TouchableWithoutFeedback onPress={this.searchPoke}>
                             <Image source={require('../../assets/logo.png')} style={styles.logo}></Image>
                      </TouchableWithoutFeedback>
-                            
+                     <View style={styles.footer}>
+                     <Image source={require('../../assets/ash.png')} style={styles.ash}/>
+                     </View>
             </View>
 
         )
@@ -50,6 +52,16 @@ const styles = StyleSheet.create({
         padding: 6,
         start: 1
     },
+    ash : {
+        width: 400,
+        height: 320,
+        resizeMode: 'center',
+        top: 70
+        
+    },
+    footer : {
+        flex: 1,
+    }
   
 })
 export default Search
