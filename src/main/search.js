@@ -1,6 +1,5 @@
 import React, {Component } from 'react'
-import {View, StyleSheet, TouchableWithoutFeedback, Image} from 'react-native'
-import {Header, Item, Input} from 'native-base';
+import {View, Text, TouchableWithoutFeedback, Image, StyleSheet, TextInput} from 'react-native'
 
 class Search extends Component{
     constructor(props){
@@ -15,41 +14,42 @@ class Search extends Component{
     render(){
         return(
             <View style={styles.container}>
-                <Header style={styles.header}>
-                    <Item>
-                         <Input value={this.state.pokeSearch} placeholder="Search Pokemon" 
-                            onChangeText={(pokeSearch)=>this.setState({pokeSearch})}/>
-                            <TouchableWithoutFeedback onPress={this.searchPoke}>
-                                <Image source={require('../../assets/logo.png')} style={styles.logo}>
-                                </Image>
-                             </TouchableWithoutFeedback>
-                    </Item>
-                   
-
-                </Header>
+                <TextInput value={this.state.pokeSearch}
+                        placeholder="Search another Pokemon here!"
+                        onChangeText={(pokeSearch)=>this.setState({pokeSearch})}
+                        style={styles.input}>
+                </TextInput>
+                     <TouchableWithoutFeedback onPress={this.searchPoke}>
+                            <Image source={require('../../assets/logo.png')} style={styles.logo}></Image>
+                     </TouchableWithoutFeedback>
+                            
             </View>
+
         )
     }
 }
 const styles = StyleSheet.create({
     container : {
-        flex: 1,
-        bottom: 300,
+        bottom: 273,
     },
     logo : {
-        height: 40,
-        width: 40,
-        start: 3
+        width: 50,
+        height: 50,
+        start: 310,
+        bottom: 23
     },
-    header : {
-        backgroundColor: 'black',
-        height: 45,
-        width: 375,
-        marginStart: -9,
+    input : {
+        backgroundColor: 'white',
+        width: 360,
+        height: 50,
+        top: 27,
+        borderWidth: 2,
+        borderStyle: 'solid',
         fontWeight: 'bold',
-        fontSize: 15,
-        borderWidth: 1,
-
-    }
+        fontSize: 17,
+        padding: 6,
+        start: 1
+    },
+  
 })
 export default Search
