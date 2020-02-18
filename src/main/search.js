@@ -1,19 +1,35 @@
 import React, {Component } from 'react'
 import {View, TouchableWithoutFeedback, Image, StyleSheet, TextInput} from 'react-native'
+import PokeLoader from './components/pokeloader'
+import SearchBody from './components/searchbody'
 
 class Search extends Component{
     constructor(props){
         super(props);
        this.state = {
-        pokeSearch: ""
+        pokeSearch: "",
+        onCall: true
     }
    }
     searchPoke = () =>{
 
     }
+    renderBody = () =>{
+        if(this.state.onCall){
+            return(
+                <PokeLoader />
+            )
+        }
+        else{
+            return(
+                <SearchBody />
+            )
+        }
+    }
     render(){
         return(
-            <View style={styles.container}>
+            <View style={{flex: 1}}>
+              <View style={styles.header}>
                 <TextInput value={this.state.pokeSearch}
                         placeholder="Search another Pokemon here!"
                         onChangeText={(pokeSearch)=>this.setState({pokeSearch})}
@@ -22,16 +38,14 @@ class Search extends Component{
                      <TouchableWithoutFeedback onPress={this.searchPoke}>
                             <Image source={require('../../assets/logo.png')} style={styles.logo}></Image>
                      </TouchableWithoutFeedback>
-                     <View style={styles.footer}>
-                     <Image source={require('../../assets/ash.png')} style={styles.ash}/>
-                     </View>
+              </View>
+              {this.renderBody()}
             </View>
-
         )
     }
 }
 const styles = StyleSheet.create({
-    container : {
+    header : {
         bottom: 273,
     },
     logo : {
@@ -42,7 +56,7 @@ const styles = StyleSheet.create({
     },
     input : {
         backgroundColor: 'white',
-        width: 360,
+        width: 355,
         height: 50,
         top: 27,
         borderWidth: 2,
@@ -50,18 +64,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 17,
         padding: 6,
-        start: 1
-    },
-    ash : {
-        width: 400,
-        height: 320,
-        resizeMode: 'center',
-        top: 70
-        
-    },
-    footer : {
-        flex: 1,
+        start: 3
     }
-  
 })
 export default Search
