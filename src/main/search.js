@@ -8,7 +8,7 @@ class Search extends Component{
         super(props);
        this.state = {
         pokeSearch: "",
-        onCall: true
+        onCall: false
     }
    }
     searchPoke = () =>{

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import {View, Text, StyleSheet, Image} from 'react-native'
 
 class SearchBody extends Component{
     render(){
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         width: 400,
         height: 320,
         resizeMode: 'center',
-        top: 70
+        bottom: 120
     },
     footer : {
         flex: 1,
