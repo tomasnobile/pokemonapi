@@ -2,18 +2,31 @@ import React, {Component } from 'react'
 import {View, TouchableWithoutFeedback, Image, StyleSheet, TextInput} from 'react-native'
 import PokeLoader from './components/pokeloader'
 import SearchBody from './components/searchbody'
+import axios from 'axios'
+
 
 class Search extends Component{
     constructor(props){
         super(props);
        this.state = {
         pokeSearch: "",
-        onCall: false
+        onCall: true,
+        data: {}
     }
    }
     searchPoke = () =>{
-
-    }
+        this.setState({onCall: true});
+        var self = this;
+    axios.get('http://pokeapi.co/api/v2/pokemon/'+this.state.pokeSearch.toLowerCase()) 
+    .then(function(response) {
+        console.log(response.data);
+        self.setState({data: response.data});
+        self.setState({onCall: false});
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}
     renderBody = () =>{
         if(this.state.onCall){
             return(
@@ -22,7 +35,7 @@ class Search extends Component{
         }
         else{
             return(
-                <SearchBody />
+                <SearchBody data={this.state.data}/>
             )
         }
     }

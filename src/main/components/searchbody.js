@@ -1,26 +1,26 @@
 import React, {Component} from 'react'
-import {View, Text, StyleSheet, Image} from 'react-native'
+import {Text, ScrollView, StyleSheet} from 'react-native'
 
 class SearchBody extends Component{
     render(){
+        var pokemon = this.props.data;
+        if(!pokemon){
+            return<View/>
+        }
         return(
-            <View>
-                <View style={styles.body}>
-                     <Image source={require('../../../assets/ash.png')} style={styles.ash}/>
-                </View>
-            </View>
-        )
-    }
+               <ScrollView style={styles.body}>
+                   <Text style={styles.header}>#{pokemon.id} - {pokemon.name.toUpperCase()}</Text>
+               </ScrollView>
+        )}
 }
 const styles = StyleSheet.create({
-    ash : {
-        width: 400,
-        height: 320,
-        resizeMode: 'center',
-        bottom: 120
-    },
-    footer : {
+    body : {
         flex: 1,
+    },
+    header : {
+        fontSize: 30,
+        color: 'red',
+        textAlign: 'center'
     }
 })
 export default SearchBody

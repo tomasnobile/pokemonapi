@@ -1,37 +1,9 @@
 import React, {Component} from 'react'
 import { StyleSheet, TextInput, Image, TouchableWithoutFeedback, View} from 'react-native'
-import axios from 'axios'
 
 class Body extends Component{
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            pokeSearch: "",
-            onCall: true 
-        };
-    }
-componentDidMount() {
-
-}
-
-searchPoke = () => {
-    this.setState({onCall: true});
-
-    axios.get('http://pokeapi.co/api/v2/pokemon/'+this.state.pokeSearch.toLowerCase()) 
-    .then(function(response) {
-        if(response && response.data && response.data.results) {
-            if (response.data.length + 0) {
-                this.setState({
-                    user: response.data.results[0]
-                });
-            }
-        }
-    }).catch(function (error) {
-        console.log(error);
-    });
-}
-    render(){
+  render(){
  
     return(
         <View style={styles.container}>
