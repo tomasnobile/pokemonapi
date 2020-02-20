@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { StyleSheet, TextInput, Image, TouchableWithoutFeedback, View} from 'react-native'
+import { StyleSheet, Image, TouchableWithoutFeedback, View, Text, TouchableHighlight} from 'react-native'
 
 class Body extends Component{
 
@@ -8,7 +8,20 @@ class Body extends Component{
     return(
         <View style={styles.container}>
             <Image source={require('../../assets/pokemon.png')} style={styles.pokemon}></Image>
-            <TextInput placeholder="Search your Pokemon here!" style={styles.input}/>
+            <TouchableHighlight onPress={()=>this.props.switchScreen('search')}
+                style ={{
+                    height: 47,
+                    width:220,
+                    borderRadius: 10,
+                    borderStyle: 'solid',
+                    borderColor: '#34343c',
+                    borderWidth: 1.5,
+                    backgroundColor : '#cad8e0',
+                    bottom: 3
+
+                }}>
+                    <Text style={styles.boton}>Search your Pokemon!</Text>
+          </TouchableHighlight> 
             <TouchableWithoutFeedback onPress={()=>this.props.switchScreen('search')}>
                  <Image source={require('../../assets/logo.png')} style={styles.logo}/>
             </TouchableWithoutFeedback>
@@ -26,24 +39,20 @@ const styles = StyleSheet.create({
         alignItems: 'center', 
         justifyContent: 'center',
         marginBottom: 150
-        
-    },
-    input : {
-        height: 55,
-        width: 238,
-        backgroundColor: 'white',
-        end: -5,
-        borderWidth: 2,
-        borderStyle: 'solid',
-        fontWeight: 'bold',
-        fontSize: 15,
-        padding: 5,
     },
     logo : {
         width: 50,
         height: 51,
         bottom: 53,
         start: 100
+    },
+    boton : {
+        textAlign: 'center',
+        top: 12,
+        end: 10,
+        fontSize: 15,
+        color: '#e88c8c',
+        fontStyle: 'normal'
     },
     pokemon : {
         width: 350,

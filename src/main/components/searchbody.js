@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Text, ScrollView, StyleSheet} from 'react-native'
+import {Text, ScrollView, StyleSheet, View} from 'react-native'
 
 class SearchBody extends Component{
     render(){
@@ -9,7 +9,7 @@ class SearchBody extends Component{
         }
         return(
                <ScrollView style={styles.body}>
-                   <Text style={styles.header}>#{pokemon.id} - {pokemon.name.toUpperCase()}</Text>
+                   <Text style={styles.header}>#{pokemon.id} - {pokemon.name}</Text>
                </ScrollView>
         )}
 }
@@ -18,9 +18,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header : {
-        fontSize: 30,
-        color: 'red',
-        textAlign: 'center'
+       
     }
 })
 export default SearchBody

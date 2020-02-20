@@ -11,20 +11,26 @@ class Search extends Component{
        this.state = {
         pokeSearch: "",
         onCall: true,
-        data: {}
+        data: {},
     }
+   }
+   componentDidMount(){
+       console.log(this.state.pokeSearch)
    }
     searchPoke = () =>{
         this.setState({onCall: true});
-        var self = this;
-    axios.get('http://pokeapi.co/api/v2/pokemon/'+this.state.pokeSearch.toLowerCase()) 
-    .then(function(response) {
-        console.log(response.data);
-        self.setState({data: response.data});
-        self.setState({onCall: false});
+        const pokemon = this.state.pokeSearch.toLocaleLowerCase()
+        console.log(pokemon)
+    axios.get(`http://pokeapi.co/api/v2/pokemon/${pokemon}`) 
+    .then((response) =>{
+        console.log('funca')
+        console.log(response.data.id);
+        this.setState({data: response.data});
+        this.setState({onCall: false});
     })
-    .catch(function (error) {
+    .catch((error) => {
         console.log(error);
+        console.log('error')
     });
 }
     renderBody = () =>{
@@ -35,7 +41,7 @@ class Search extends Component{
         }
         else{
             return(
-                <SearchBody data={this.state.data}/>
+                <SearchBody data={this.state.data} />
             )
         }
     }
