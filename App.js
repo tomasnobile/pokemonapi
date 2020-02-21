@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, ImageBackground} from 'react-native'
 //Components
-import Body from './src/main/body'
-import Search from './src/main/search'
+import Body from './src/screens/body'
+import Search from './src/screens/search'
 
 class App extends Component{
   constructor(props){
@@ -29,7 +29,7 @@ class App extends Component{
   render(){
 
     return(
-      <ImageBackground source={require('./assets/fondo.png')} style={styles.container}>
+      <ImageBackground source={require('./src/assets/fondo.png')} style={styles.container}>
       <View>
         {this.renderScreen()}
       </View>

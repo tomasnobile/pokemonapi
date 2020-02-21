@@ -1,7 +1,7 @@
 import React, {Component } from 'react'
 import {View, TouchableWithoutFeedback, Image, StyleSheet, TextInput} from 'react-native'
-import PokeLoader from './components/pokeloader'
-import SearchBody from './components/searchbody'
+import PokeLoader from '../components/pokeloader'
+import SearchBody from '../components/searchbody'
 import axios from 'axios'
 
 
@@ -11,7 +11,7 @@ class Search extends Component{
        this.state = {
         pokeSearch: "",
         onCall: true,
-        data: {},
+        data: [],
     }
    }
    componentDidMount(){
@@ -24,7 +24,7 @@ class Search extends Component{
     axios.get(`http://pokeapi.co/api/v2/pokemon/${pokemon}`) 
     .then((response) =>{
         console.log('funca')
-        console.log(response.data.id);
+        console.log(response.data);
         this.setState({data: response.data});
         this.setState({onCall: false});
     })
@@ -55,7 +55,7 @@ class Search extends Component{
                         style={styles.input}>
                 </TextInput>
                      <TouchableWithoutFeedback onPress={this.searchPoke}>
-                            <Image source={require('../../assets/logo.png')} style={styles.logo}></Image>
+                            <Image source={require('../assets/logo.png')} style={styles.logo}></Image>
                      </TouchableWithoutFeedback>
               </View>
               {this.renderBody()}
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
         start: 3
     }
 })
-export default Search
+export default Search  

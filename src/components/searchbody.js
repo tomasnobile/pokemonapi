@@ -6,19 +6,23 @@ class SearchBody extends Component{
         var pokemon = this.props.data;
         if(!pokemon){
             return<View/>
-        }
+        } else {
         return(
-               <ScrollView style={styles.body}>
-                   <Text style={styles.header}>#{pokemon.id} - {pokemon.name}</Text>
-               </ScrollView>
+                <View style={styles.body}>
+                 <ScrollView>
+                   <Text style={styles.header}>#{pokemon.data}</Text>
+                  </ScrollView>
+                </View>  
         )}
-}
+}}
 const styles = StyleSheet.create({
     body : {
         flex: 1,
     },
     header : {
-       
+       color: '#e88c8c',
+       justifyContent: 'center',
+       alignItems: 'center'
     }
 })
 export default SearchBody

@@ -7,7 +7,7 @@ class Body extends Component{
  
     return(
         <View style={styles.container}>
-            <Image source={require('../../assets/pokemon.png')} style={styles.pokemon}></Image>
+            <Image source={require('../assets/pokemon.png')} style={styles.pokemon}></Image>
             <TouchableHighlight onPress={()=>this.props.switchScreen('search')}
                 style ={{
                     height: 47,
@@ -23,10 +23,10 @@ class Body extends Component{
                     <Text style={styles.boton}>Search your Pokemon!</Text>
           </TouchableHighlight> 
             <TouchableWithoutFeedback onPress={()=>this.props.switchScreen('search')}>
-                 <Image source={require('../../assets/logo.png')} style={styles.logo}/>
+                 <Image source={require('../assets/logo.png')} style={styles.logo}/>
             </TouchableWithoutFeedback>
             <View>
-                <Image source={require('../../assets/squirtle.png')} style={styles.footer}/>
+                <Image source={require('../assets/squirtle.png')} style={styles.footer}/>
             </View>
         </View>
     )
