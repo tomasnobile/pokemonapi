@@ -10,7 +10,7 @@ class SearchBody extends Component{
         return(
                 <View style={styles.body}>
                  <ScrollView>
-                   <Text style={styles.header}>#{pokemon.data}</Text>
+                         <Text style={styles.header}>{pokemon.name}</Text>
                   </ScrollView>
                 </View>  
         )}
@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     header : {
        color: '#e88c8c',
        justifyContent: 'center',
-       alignItems: 'center'
+       alignItems: 'center',
+       backgroundColor: 'black'
     }
 })
 export default SearchBody
