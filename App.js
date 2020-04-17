@@ -1,48 +1,30 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, ImageBackground} from 'react-native'
-//Components
-import Body from './src/screens/body'
-import Search from './src/screens/search'
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ImageBackground
+} from 'react-native';
 
-class App extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      currentScreen : 'landing'
-    }
-  }
-  switchScreen = (currentScreen) => {
-      this.setState({currentScreen});
-  }
-  renderScreen = () => {
-    if(this.state.currentScreen === 'landing'){
-      return(
-        <Body switchScreen={this.switchScreen} />
-      )
-    }
-    else if(this.state.currentScreen === 'search'){
-      return(
-        <Search />
-      )
-    }
-  }
-  render(){
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack'
 
-    return(
-      <ImageBackground source={require('./src/assets/fondo.png')} style={styles.container}>
-      <View>
-        {this.renderScreen()}
-      </View>
-      </ImageBackground>
-    );
-  }
-};
+//Screens
+import HomePage from './src/screens/Home';
+import Searching from './src/screens/Searching';
 
-const styles = StyleSheet.create({
-  container : {
-    flex: 1,
-    justifyContent: 'center'
+<ImageBackground source={require('./src/assets/fondo.png')}>
+  </ImageBackground>
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: HomePage
+  },
+  Search: {
+    screen: Searching
   }
 })
 
-export default App
+
+export default createAppContainer(AppNavigator);
