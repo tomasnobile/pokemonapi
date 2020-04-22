@@ -8,45 +8,25 @@ import {
      TextInput
        } from 'react-native'
 
-import PokeServices from '../services/PokeServices'
+import PokeServices from '../services/PokeServices';
 
-class HomePage extends Component{
-
-    constructor(props){
-        super(props);
-        this.state = {
-            data: [],
-        }
-    }
-
-    componentDidMount(){
-        PokeServices.getPokemons().then((results) => {
-            this.setState({data:results.data})
-        }).catch((err) => {
-            console.log("Err", err);
-        });
-    }
-
-    render(){
+const HomePage = ({navigation}: any) => {
+    const navigate = () => navigation.navigate('Search');
  
        return(
         <View style={styles.container}>
                 <Image source={require('../assets/pokemon.png')} style={styles.pokemon}></Image>
-                <TextInput 
-                style={styles.input}
-                placeholder="Search your pokémon here!"
-              
-                />
-                <TouchableHighlight>
-                    <Image source={require('../assets/logo.png')} style={styles.logo}></Image>
+                <TouchableHighlight onPress={navigate} style={styles.touchable}>
+                    <Text style={styles.text}>Touch here to Search!</Text>
                 </TouchableHighlight>
+                 <Image source={require('../assets/logo.png')} style={styles.logo} onPress={navigate}></Image>
             <View>
                 <Image source={require('../assets/squirtle.png')} style={styles.footer}/>
             </View>
         </View>
     )
     }
-}
+
 
 const styles = StyleSheet.create({
     container : {
@@ -55,13 +35,17 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginBottom: 150,
     },
-    input : {
+    text : {
         borderWidth: 1,
-        borderColor: 'gray',
         padding: 6,
         margin: 10,
         width: 225,
-        top: 60
+        top: 60,
+        height: 43,
+        fontSize: 18,
+        backgroundColor: '#DCDCDC',
+        borderColor: 'black',
+        color: '#C70F0E'
     },
     pokemon : {
         width: 350,
