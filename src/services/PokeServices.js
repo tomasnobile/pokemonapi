@@ -6,4 +6,4 @@ var PokeServices = {
     }
 }
 
-export { PokeServices as default};
+export { PokeServices as default };

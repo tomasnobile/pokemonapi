@@ -4,25 +4,27 @@ import {
      Image, 
      View, 
      Text, 
-     TouchableHighlight,
-     TextInput
+    TouchableWithoutFeedback,
+     ImageBackground
        } from 'react-native'
 
-import PokeServices from '../services/PokeServices';
-
-const HomePage = ({navigation}: any) => {
+const HomePage = ({navigation}) => {
     const navigate = () => navigation.navigate('Search');
  
        return(
         <View style={styles.container}>
+            <ImageBackground source={require('../assets/fondo.png')} style={styles.fondo}>
                 <Image source={require('../assets/pokemon.png')} style={styles.pokemon}></Image>
-                <TouchableHighlight onPress={navigate} style={styles.touchable}>
+                <TouchableWithoutFeedback onPress={navigate}>
+                    <View>
                     <Text style={styles.text}>Touch here to Search!</Text>
-                </TouchableHighlight>
-                 <Image source={require('../assets/logo.png')} style={styles.logo} onPress={navigate}></Image>
+                     <Image source={require('../assets/logo.png')} style={styles.logo} onPress={navigate}></Image>
+                     </View>
+                </TouchableWithoutFeedback>
             <View>
                 <Image source={require('../assets/squirtle.png')} style={styles.footer}/>
             </View>
+            </ImageBackground>
         </View>
     )
     }
@@ -35,17 +37,24 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginBottom: 150,
     },
+    fondo : {
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 710,
+        width: 370,
+    },
     text : {
-        borderWidth: 1,
+        borderWidth: 3,
         padding: 6,
         margin: 10,
         width: 225,
-        top: 60,
+        top: 74,
         height: 43,
         fontSize: 18,
         backgroundColor: '#DCDCDC',
         borderColor: 'black',
-        color: '#C70F0E'
+        color: '#C70F0E',
+        start: 10
     },
     pokemon : {
         width: 350,
@@ -55,17 +64,17 @@ const styles = StyleSheet.create({
     },
     logo : {
         width: 50,
-        height: 45,
-        start: 93,
-        top: 6,
+        height: 43,
+        start: 199,
+        top: 20,
         resizeMode: 'center'
     },
     footer : {
         width: 260,
         height: 260,
-        top: 40,
+        top: 60,
         resizeMode: 'center',
-        start: 20 
+        start: 25 
     }
 })
 

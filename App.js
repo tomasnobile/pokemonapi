@@ -15,8 +15,6 @@ import { createStackNavigator } from 'react-navigation-stack'
 import HomePage from './src/screens/Home';
 import Searching from './src/screens/Searching';
 
-<ImageBackground source={require('./src/assets/fondo.png')}>
-  </ImageBackground>
 const AppNavigator = createStackNavigator({
   Home: {
     screen: HomePage
